@@ -1,0 +1,78 @@
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+    upstream yuhuangshe{
+        server 127.0.0.1:8080;
+    }
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location ~ ^/favicon\.ico$ {
+            root F:/study/VSCode/page/;
+        }
+
+
+        location ~ /SampleHandlerService/websocket {
+			proxy_cookie_path /SampleHandlerService /SampleHandler;
+            proxy_pass http://yuhuangshe;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+
+        }
+
+        location ~ SampleHandlerService.* {
+			proxy_cookie_path /SampleHandlerService /SampleHandler;
+            proxy_pass http://yuhuangshe;
+			proxy_set_header Host $host:$server_port;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Real-port $remote_port;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_redirect http://yuhuangshe/SampleHandlerService http://$host/SampleHandler;
+
+        }
+
+
+        location  /YuHuangShe  {
+            alias F:/study/VSCode/page/;
+            index  index.html;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+
+    }
+
+}
