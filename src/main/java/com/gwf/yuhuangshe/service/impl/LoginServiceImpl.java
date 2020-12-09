@@ -1,16 +1,23 @@
 package com.gwf.yuhuangshe.service.impl;
 
-import com.gwf.yuhuangshe.dao.UserDao;
+import com.gwf.yuhuangshe.dao.UserMapper;
 import com.gwf.yuhuangshe.entity.User;
 import com.gwf.yuhuangshe.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoginServiceImpl implements LoginService {
-    private UserDao userDao;
+    @Autowired
+    private UserMapper userMapper;
 
-    public String login(User user){
-        return userDao.login(user);
+    @Override
+    public int login(User user){
+        System.out.println(user.getUName());
+        List<User> result  =  userMapper.login(user);
+//        System.out.println(result);
+        return 1;
     }
 }

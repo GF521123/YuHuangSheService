@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.UserMapper">
+<mapper namespace="com.gwf.yuhuangshe.dao.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.example.entity.User">
         <result column="UId" jdbcType="INTEGER" property="UId" />
@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="login" resultType="com.example.entity.User">
-        select * from user where id = #{id}
+        select * from user where  UName = #{UName}
     </select>
 
 </mapper>

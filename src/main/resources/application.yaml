@@ -2,7 +2,6 @@ spring:          #表示该配置直接为Spring容器负责处理
 　　datasource:
   　　type: com.alibaba.druid.pool.DruidDataSource   #配置当前要使用的数据源的操作类型那个
   　　driver-class-name: org.gjt.mm.mysql.Driver       #配置MySQL的驱动程序类
-  　　url: jdbc:mysql://121.36.138.105:3306/yhs?useUnicode=true&characterEncoding=utf8
   　　username: root
   　　password: 521123
   　　filters: stat,wall,log4j     #druid监控配置
@@ -18,7 +17,7 @@ spring:          #表示该配置直接为Spring容器负责处理
 #  mybatis.mapper-locations=classpath:mapper/*.xml
 #  mybatis.configuration.map-underscore-to-camel-case=true
 mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
+  mapper-locations: classpath:com.gwf.yuhuangshe.dao.mapper/*Mapper.xml
   type-aliases-package: com.gwf.yuhuangshe.entity
 
 
