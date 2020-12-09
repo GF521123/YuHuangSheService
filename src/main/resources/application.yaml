@@ -17,8 +17,10 @@ spring:          #表示该配置直接为Spring容器负责处理
 #  mybatis.mapper-locations=classpath:mapper/*.xml
 #  mybatis.configuration.map-underscore-to-camel-case=true
 mybatis:
-  mapper-locations: classpath:com.gwf.yuhuangshe.dao.mapper.*.xml
+  mapper-locations: classpath*:com.gwf.yuhuangshe.dao.mapper.*Mapper.xml
   type-aliases-package: com.gwf.yuhuangshe.entity
+  configuration:
+    map-underscore-to-camel-case: true
 
 
 #showSql
