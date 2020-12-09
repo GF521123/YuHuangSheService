@@ -31,48 +31,60 @@ http {
     keepalive_timeout  65;
 
     #gzip  on;
-    upstream yuhuangshe{
+
+    upstream jsp {
+
         server 127.0.0.1:8080;
+
     }
-
     server {
-        listen       80;
-        server_name  localhost;
-
+	    listen        80;
+        server_name  location;
         location ~ ^/favicon\.ico$ {
-            root F:/study/VSCode/page/;
+            root F:/study/VSCode/YuHuangShePage/;
         }
+        # location ~ /YuHuangSheService/websocket {
+        #     proxy_cookie_path /YuHuangSheService /YuHuangShe;
+        #     proxy_pass http://jsp;
+        #     proxy_http_version 1.1;
+        #     proxy_set_header Upgrade $http_upgrade;
+        #     proxy_set_header Connection "upgrade";
+        #     proxy_set_header X-Real-IP $remote_addr;
+        # }
 
-
-        location ~ /SampleHandlerService/websocket {
-			proxy_cookie_path /SampleHandlerService /SampleHandler;
-            proxy_pass http://yuhuangshe;
+        location ~ /YuHuangSheService/websocket {
+            proxy_cookie_path /YuHuangSheService /YuHuangShe;
+            proxy_pass http://jsp;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             proxy_set_header X-Real-IP $remote_addr;
-
+#            proxy_cookie_path /YuHuangSheService /YuHuangShe;
+#            rewrite "/YuHuangShe/(.*)$" /YuHuangSheService/$1;
         }
-
-        location ~ SampleHandlerService.* {
-			proxy_cookie_path /SampleHandlerService /SampleHandler;
-            proxy_pass http://yuhuangshe;
-			proxy_set_header Host $host:$server_port;
+        location ~ /YuHuangShe/websocket {
+            rewrite "YuHuangShe/(.*)$" /YuHuangSheService/$1;
+        }
+        location ~ YuHuangSheService.* {
+            proxy_cookie_path /YuHuangSheService /YuHuangShe;
+            proxy_pass http://jsp;
+            proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Real-port $remote_port;
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_redirect http://yuhuangshe/SampleHandlerService http://$host/SampleHandler;
-
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Real-Port $remote_port;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_redirect http://jsp/YuHuangSheService http://$host/YuHuangShe;
         }
-
+        location ~ YuHuangShe.*\.jsp$ {
+            proxy_set_header X-Real-IP $remote_addr;
+            rewrite "([0-9a-zA-Z\.]*)\.jsp$" /YuHuangSheService/$1;
+        }
 
         location  /YuHuangShe  {
-            alias F:/study/VSCode/page/;
-            index  index.html;
+            alias F:/study/VSCode/YuHuangShePage/;
+            index  login.html;
         }
-
         error_page   500 502 503 504  /50x.html;
-
     }
 
 }

@@ -18,12 +18,22 @@ spring:          #表示该配置直接为Spring容器负责处理
 #  mybatis.mapper-locations=classpath:mapper/*.xml
 #  mybatis.configuration.map-underscore-to-camel-case=true
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.gwf.yuhuangshe.entity
+
 
 #showSql
 #logging:
 #  level:
 #    com:
 #      example:
+server:
+  servlet:
+    context-path: /YuHuangSheService
 #        mapper : debug
+#  server.tomcat.remote_ip_header=x-forwarded-for
+#  server.use-forward-headers=true
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+#  use-forward-headers: true

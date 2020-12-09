@@ -13,7 +13,7 @@ public class LoginController {
     private LoginService loginService;
     @RequestMapping("/login")
     public void login(User user){
-        loginService.login(user);
+//        loginService.login(user);
         System.out.println("sadfaf");
     }
 }
