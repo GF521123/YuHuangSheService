@@ -13,7 +13,8 @@ public class LoginController {
     private LoginService loginService;
     @RequestMapping("/login")
     public void login(User user){
-//        loginService.login(user);
-        System.out.println(user);
+        loginService.login(user);
+//        System.out.println(user.getUName());
+//        System.out.println(user.getUPasswd());
     }
 }
