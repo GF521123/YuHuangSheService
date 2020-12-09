@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gwf.yuhuangshe.dao.UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.entity.User">
+    <resultMap id="BaseResultMap" type="com.gwf.yuhuangshe.entity.User">
         <result column="UId" jdbcType="INTEGER" property="UId" />
         <result column="UName" jdbcType="VARCHAR" property="UName" />
         <result column="UPassword" jdbcType="VARCHAR" property="UPassword" />
         <result column="UIphone" jdbcType="VARCHAR" property="UIphone" />
     </resultMap>
 
-    <select id="login" resultType="com.example.entity.User">
+    <select id="login" resultType="com.gwf.yuhuangshe.entity.User">
         select * from user where  UName = #{UName}
     </select>
 
