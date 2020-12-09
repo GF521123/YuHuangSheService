@@ -3,10 +3,10 @@
 <mapper namespace="com.example.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.example.entity.User">
-        <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="userName" jdbcType="VARCHAR" property="userName" />
-        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
-        <result column="realName" jdbcType="VARCHAR" property="realName" />
+        <result column="UId" jdbcType="INTEGER" property="UId" />
+        <result column="UName" jdbcType="VARCHAR" property="UName" />
+        <result column="UPassword" jdbcType="VARCHAR" property="UPassword" />
+        <result column="UIphone" jdbcType="VARCHAR" property="UIphone" />
     </resultMap>
 
     <select id="login" resultType="com.example.entity.User">

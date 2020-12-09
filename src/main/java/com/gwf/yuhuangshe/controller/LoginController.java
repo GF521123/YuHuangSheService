@@ -14,6 +14,6 @@ public class LoginController {
     @RequestMapping("/login")
     public void login(User user){
 //        loginService.login(user);
-        System.out.println("sadfaf");
+        System.out.println(user);
     }
 }
