@@ -10,8 +10,8 @@
     </resultMap>
 
 
-    <select id="login" resultMap="UserMap" resultType="com.gwf.yuhuangshe.entity.User">
-        select * from user where  UName = #{UName}
+    <select id="login"  resultType="com.gwf.yuhuangshe.entity.User">
+        select * from u_operators where  UName = #{UName}
     </select>
 
 </mapper>
