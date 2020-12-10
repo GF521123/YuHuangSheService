@@ -70,3 +70,14 @@ server:
     remoteip:
       remote-ip-header: x-forwarded-for
 #  use-forward-headers: true
+
+
+
+#  在SpringBoot中MyBatis显示SQL语句
+
+logging:
+  level:
+    com:
+      spring:
+        jiminshiro:
+          mapper: debug

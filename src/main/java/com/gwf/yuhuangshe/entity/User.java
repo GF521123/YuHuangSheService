@@ -4,17 +4,17 @@ package com.gwf.yuhuangshe.entity;
 public class User {
     private int UId;
     private String UName;
-    private String UPasswd;
+    private String UPassword;
 //    private String UCreateDate;
     private String UIphone;
 
     public User() {
     }
 
-    public User(int UId, String UName, String UPasswd, String UIphone) {
+    public User(int UId, String UName, String UPassword, String UIphone) {
         this.UId = UId;
         this.UName = UName;
-        this.UPasswd = UPasswd;
+        this.UPassword = UPassword;
         this.UIphone = UIphone;
     }
 
@@ -34,12 +34,12 @@ public class User {
         this.UName = UName;
     }
 
-    public String getUPasswd() {
-        return UPasswd;
+    public String getUPassword() {
+        return UPassword;
     }
 
-    public void setUPasswd(String UPasswd) {
-        this.UPasswd = UPasswd;
+    public void setUPassword(String UPassword) {
+        this.UPassword = UPassword;
     }
 
     public String getUIphone() {

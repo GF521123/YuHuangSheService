@@ -1,5 +1,6 @@
 package com.gwf.yuhuangshe.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.entity.User;
 import com.gwf.yuhuangshe.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @RequestMapping("/login")
-    public void login(User user){
-        System.out.println(user.getUName());
-//        System.out.println(user.getUPasswd());
-        loginService.login(user);
+    public JSONObject login(User user){
+        return loginService.login(user);
     }
 }
