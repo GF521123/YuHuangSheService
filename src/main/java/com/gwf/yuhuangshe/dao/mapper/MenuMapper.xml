@@ -13,7 +13,7 @@
 
 
     <select id="selMenu" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
-        select * from u_menu where  UName = #{UName} and UPassword = #{UPassword}
+        select MId,MTitle,MValue,MSort,MUrl,MOther from u_menu
     </select>
 
 </mapper>
