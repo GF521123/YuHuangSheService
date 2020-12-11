@@ -1,7 +1,6 @@
 package com.gwf.yuhuangshe.dao;
 
 import com.gwf.yuhuangshe.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

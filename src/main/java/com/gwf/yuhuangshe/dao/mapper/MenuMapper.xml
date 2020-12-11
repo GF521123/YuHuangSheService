@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gwf.yuhuangshe.dao.MenuMapper">
+
+    <resultMap id="MenuMap" type="com.gwf.yuhuangshe.entity.Menu">
+        <result column="MId" jdbcType="INTEGER" property="MId" />
+        <result column="MTitle" jdbcType="VARCHAR" property="MTitle" />
+        <result column="MValue" jdbcType="VARCHAR" property="MValue" />
+        <result column="MSort" jdbcType="INTEGER" property="MSort" />
+        <result column="MUrl" jdbcType="VARCHAR" property="MUrl" />
+        <result column="MOther" jdbcType="VARCHAR" property="MOther" />
+    </resultMap>
+
+
+    <select id="selMenu" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
+        select * from u_menu where  UName = #{UName} and UPassword = #{UPassword}
+    </select>
+
+</mapper>
+
+
+<!-- 	select查询操作 -->
+<!--<select id="allCar" resultType="com.gwf.entity.Car" resultMap="carMap">-->
+<!--	   select * from cars-->
+<!--  </select>-->
+<!--<select id="searchCars" resultType="com.gwf.entity.Car" resultMap="carMap">-->
+<!--	   select * from cars where carName like #{carName}-->
+<!--  </select>-->
+
+<!--<select id="selectCar" resultType="com.gwf.entity.Car">-->
+<!--	   select * from cars where carName=#{carName}-->
+<!--  </select>-->
+<!--<select id="selectCarById" resultType="com.gwf.entity.Car">-->
+<!--	   select * from cars where carID=#{carID}-->
+<!--  </select>-->
+
+<!--&lt;!&ndash;   update更新操作 &ndash;&gt;-->
+<!--<update id="updateCarInfor">-->
+<!--	   update  cars set  carE=#{carE},carName=#{carName},carUserName=#{carUserName} where carID=#{carID}-->
+<!--  </update>-->
+<!--&lt;!&ndash;   insert插入操作 &ndash;&gt;-->
+<!--<insert id="addCar" parameterType="com.gwf.entity.Car">-->
+<!--		insert into cars(carName,carUserName,carE)-->
+<!--		values(-->
+<!--			#{carName},#{carUserName},#{carE}-->
+<!--		)-->
+<!--	</insert>-->
+<!--&lt;!&ndash; 	删除 &ndash;&gt;-->
+<!--<delete id="delCar" >-->
+<!--		delete from cars where carID=#{carID}-->
+<!--	</delete>-->
