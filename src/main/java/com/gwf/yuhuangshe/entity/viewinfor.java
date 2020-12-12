@@ -3,7 +3,7 @@ package com.gwf.yuhuangshe.entity;
 import lombok.Data;
 
 import java.text.DateFormat;
-@Data
+
 public class viewinfor {
     private int id;//主键id
     private String value; //存储信息
@@ -26,5 +26,29 @@ public class viewinfor {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public DateFormat getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(DateFormat createdate) {
+        this.createdate = createdate;
+    }
+
+    public DateFormat getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(DateFormat updatedate) {
+        this.updatedate = updatedate;
     }
 }
