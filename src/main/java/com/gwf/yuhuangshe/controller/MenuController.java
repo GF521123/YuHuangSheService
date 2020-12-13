@@ -18,7 +18,7 @@ public class MenuController {
         return menuService.selMenu();
     }
 
-    @RequestMapping("/selMenu")
+    @RequestMapping("/selMenuById")
     @ResponseBody
     public JSONObject selMenuById(int MId){
         return menuService.selMenuById(MId);
