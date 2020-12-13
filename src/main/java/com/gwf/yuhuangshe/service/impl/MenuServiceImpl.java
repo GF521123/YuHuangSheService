@@ -23,4 +23,21 @@ public class MenuServiceImpl implements MenuService {
         return resultJson;
     }
 
+    @Override
+    public JSONObject selMenuById(int MId) {
+        List<Menu> menuList = menuMapper.selMenu();
+//        if()
+        return null;
+    }
+
+    @Override
+    public JSONObject insertMenu() {
+        return null;
+    }
+
+    @Override
+    public JSONObject updateMenu() {
+        return null;
+    }
+
 }

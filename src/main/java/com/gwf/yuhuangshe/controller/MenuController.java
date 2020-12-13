@@ -11,9 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MenuController {
     @Autowired
     private MenuService menuService;
+
     @RequestMapping("/selMenu")
     @ResponseBody
     public JSONObject selMenu(){
         return menuService.selMenu();
+    }
+
+    @RequestMapping("/selMenu")
+    @ResponseBody
+    public JSONObject selMenuById(int MId){
+        return menuService.selMenuById(MId);
     }
 }
