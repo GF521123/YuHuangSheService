@@ -21,7 +21,7 @@
     </select>
 
 <!--    insertMenu-->
-    <insert id="insertMenu" parameterMap="com.gwf.yuhuangshe.entity.Menu">
+    <insert id="insertMenu" parameterType="com.gwf.yuhuangshe.entity.Menu">
         insert into u_menu(MTitle,MValue,MSort,MUrl,MOther)
          values(#{MTitle},#{MValue},#{MSort},#{MUrl},#{MOther})
     </insert>
