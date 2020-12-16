@@ -42,6 +42,20 @@ public class MenuServiceImpl implements MenuService {
 //        if()
         return null;
     }
+
+    @Override
+    public JSONObject delMenuById(int MId) {
+        int rest = menuMapper.delMenuById( MId);
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("code",0);
+        if(rest == 1) {
+            resultJson.put("msg", "删除成功");
+        }else{
+            resultJson.put("msg", "删除失败");
+        }
+        return resultJson;
+    }
+
     @Override
     public JSONObject insertMenu() {
         return null;

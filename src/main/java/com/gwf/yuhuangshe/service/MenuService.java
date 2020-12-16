@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface MenuService {
     public JSONObject selMenu();
     public JSONObject selMenuById(int MId);
+    public JSONObject delMenuById(int MId);
     public JSONObject insertMenu();
     public JSONObject updateMenu();
     public JSONObject selMenuPage(int pageSize,int pageNumber);

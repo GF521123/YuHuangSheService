@@ -25,6 +25,13 @@ public class MenuControllerImpl implements MenuController {
         return menuService.selMenuById(MId);
     }
 
+    @Override
+    @RequestMapping("/delMenuById")
+    @ResponseBody
+    public JSONObject delMenuById(int MId) {
+        return menuService.delMenuById(MId);
+    }
+
     @RequestMapping("/selMenuPage")
     @ResponseBody
     public JSONObject selMenuPage(int pageSize,int pageNumber){

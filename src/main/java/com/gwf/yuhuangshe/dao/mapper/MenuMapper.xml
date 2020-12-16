@@ -63,7 +63,9 @@
             </if>
         </where>
     </update>
-    
+    <delete id="delMenuById">
+        delete  from u_menu where MId=#{MId}
+    </delete>
 </mapper>
 
 
