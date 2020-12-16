@@ -1,4 +1,4 @@
-package com.gwf.yuhuangshe.service.impl;
+package com.gwf.yuhuangshe.serviceImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.entity.Menu;
@@ -14,11 +14,12 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuMapper menuMapper;
     @Override
-    public JSONObject selMenu(){
+    public JSONObject selMenu(int pageSize,int pageNumber){
         List<Menu> restMenusList = menuMapper.selMenu();
         JSONObject resultJson = new JSONObject();
-        resultJson.put("code",0);
-        resultJson.put("Menus",restMenusList);
+//        resultJson.put("code",0);
+        resultJson.put("total",restMenusList.size());
+        resultJson.put("rows",restMenusList);
 
         return resultJson;
     }
