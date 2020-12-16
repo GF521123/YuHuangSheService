@@ -41,24 +41,24 @@
     <update id="updateMenu">
         update u_menu
         <trim prefix="set" suffixOverrides=",">
-            <if test="MTitle != null">
+            <if test="MTitle != null and MTitle != ''">
                 MTitle = #{MTitle} ,
             </if>
-            <if test="MValue != null">
+            <if test="MValue != null and MValue != ''">
                 MValue = #{MValue} ,
             </if>
-            <if test="MSort != null">
+            <if test="MSort != null and MSort != ''">
                 MSort = #{MSort} ,
             </if>
-            <if test="MUrl != null">
+            <if test="MUrl != null and MUrl != ''">
                 MUrl = #{MUrl} ,
             </if>
-            <if test="MOther != null">
+            <if test="MOther != null and MOther != ''">
                 MOther = #{MOther}
             </if>
         </trim>
         <where>
-            <if test="MId != null">
+            <if test="MId != null and MId != ''">
                 MId = #{MId}
             </if>
         </where>

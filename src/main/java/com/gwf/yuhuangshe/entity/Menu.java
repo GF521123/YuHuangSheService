@@ -1,17 +1,17 @@
 package com.gwf.yuhuangshe.entity;
 
 public class Menu {
-    private int MId;
+    private Integer MId;
     private String MTitle;
     private String MValue;
-    private int MSort;
+    private Integer MSort;
     private String MUrl;
     private String MOther;
 
     public Menu() {
     }
 
-    public Menu(int MId, String MTitle, String MValue, int MSort, String MUrl, String MOther) {
+    public Menu(Integer MId, String MTitle, String MValue, Integer MSort, String MUrl, String MOther) {
         this.MId = MId;
         this.MTitle = MTitle;
         this.MValue = MValue;
@@ -20,11 +20,11 @@ public class Menu {
         this.MOther = MOther;
     }
 
-    public int getMId() {
+    public Integer getMId() {
         return MId;
     }
 
-    public void setMId(int MId) {
+    public void setMId(Integer MId) {
         this.MId = MId;
     }
 
@@ -44,11 +44,11 @@ public class Menu {
         this.MValue = MValue;
     }
 
-    public int getMSort() {
+    public Integer getMSort() {
         return MSort;
     }
 
-    public void setMSort(int MSort) {
+    public void setMSort(Integer MSort) {
         this.MSort = MSort;
     }
 
@@ -66,5 +66,17 @@ public class Menu {
 
     public void setMOther(String MOther) {
         this.MOther = MOther;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "MId=" + MId +
+                ", MTitle='" + MTitle + '\'' +
+                ", MValue='" + MValue + '\'' +
+                ", MSort=" + MSort +
+                ", MUrl='" + MUrl + '\'' +
+                ", MOther='" + MOther + '\'' +
+                '}';
     }
 }

@@ -2,6 +2,7 @@ package com.gwf.yuhuangshe.controllerImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.controller.MenuController;
+import com.gwf.yuhuangshe.entity.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +37,19 @@ public class MenuControllerImpl implements MenuController {
     @ResponseBody
     public JSONObject selMenuPage(int pageSize,int pageNumber){
         return menuService.selMenuPage( pageSize, pageNumber);
+    }
+
+    @Override
+    @RequestMapping("/insertMenu")
+    @ResponseBody
+    public JSONObject insertMenu(Menu menu) {
+        return menuService.insertMenu(menu);
+    }
+
+    @Override
+    @RequestMapping("/updateMenu")
+    @ResponseBody
+    public JSONObject updateMenu(Menu menu) {
+        return menuService.updateMenu(menu);
     }
 }
