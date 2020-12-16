@@ -1,18 +1,16 @@
 package com.gwf.yuhuangshe.serviceImpl;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.dao.UserMapper;
 import com.gwf.yuhuangshe.entity.User;
-import com.gwf.yuhuangshe.service.LoginService;
+import com.gwf.yuhuangshe.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class UserLoginServiceImpl implements UserLoginService {
     @Autowired
     private UserMapper userMapper;
 

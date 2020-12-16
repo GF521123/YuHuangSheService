@@ -1,8 +1,8 @@
-package com.gwf.yuhuangshe.controller;
+package com.gwf.yuhuangshe.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.entity.User;
 
-public interface LoginController {
+public interface UserLoginService {
     public JSONObject login(User user);
 }
