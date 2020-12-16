@@ -24,4 +24,10 @@ public class MenuControllerImpl implements MenuController {
     public JSONObject selMenuById(int MId){
         return menuService.selMenuById(MId);
     }
+
+    @RequestMapping("/selMenuPage")
+    @ResponseBody
+    public JSONObject selMenuPage(int pageSize,int pageNumber){
+        return menuService.selMenuPage( pageSize, pageNumber);
+    }
 }

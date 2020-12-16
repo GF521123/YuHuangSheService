@@ -75,6 +75,23 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+<!--        <dependency>-->
+<!--           <groupId>com.github.pagehelper</groupId>-->
+<!--           <artifactId>pagehelper</artifactId>-->
+<!--           <version>5.0.0</version>-->
+<!--        </dependency>-->
+<!--        自动部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>

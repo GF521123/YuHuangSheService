@@ -1,6 +1,8 @@
 package com.gwf.yuhuangshe.serviceImpl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.gwf.yuhuangshe.entity.Menu;
 import com.gwf.yuhuangshe.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +16,23 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuMapper menuMapper;
     @Override
-    public JSONObject selMenu(int pageSize,int pageNumber){
+    public JSONObject selMenu(){
         List<Menu> restMenusList = menuMapper.selMenu();
         JSONObject resultJson = new JSONObject();
-//        resultJson.put("code",0);
-        resultJson.put("total",restMenusList.size());
         resultJson.put("rows",restMenusList);
+        resultJson.put("total",menuMapper.selMenuNum());
 
+        return resultJson;
+    }
+
+    public JSONObject selMenuPage(int pageSize,int pageNumber){
+        System.out.println(pageSize+"   "+pageNumber);
+        PageHelper.startPage(pageSize/pageNumber+1,pageNumber);
+        List<Menu> restMenusList = menuMapper.selMenuPage();
+        PageInfo pageInfo = new PageInfo(restMenusList);
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("rows",pageInfo.getList());
+        resultJson.put("total",menuMapper.selMenuNum());
         return resultJson;
     }
 
@@ -30,7 +42,6 @@ public class MenuServiceImpl implements MenuService {
 //        if()
         return null;
     }
-
     @Override
     public JSONObject insertMenu() {
         return null;

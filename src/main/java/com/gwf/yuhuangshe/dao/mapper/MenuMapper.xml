@@ -10,10 +10,22 @@
         <result column="MUrl" jdbcType="VARCHAR" property="MUrl" />
         <result column="MOther" jdbcType="VARCHAR" property="MOther" />
     </resultMap>
-
+    <sql id="Base_Menu_List" >
+        MId,MTitle,MValue,MSort,MUrl,MOther
+    </sql>
 
     <select id="selMenu" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
+        select
+        <include refid="Base_Menu_List" />
+         from u_menu
+    </select>
+    <select id="selMenuPage" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
         select MId,MTitle,MValue,MSort,MUrl,MOther from u_menu
+
+    </select>
+<!--    &#45;&#45;         limit #{pageSize},#{pageNumber}-->
+    <select id="selMenuNum" resultType="java.lang.Integer">
+        select count(*) from u_menu
     </select>
 
     <select id="selMenuById" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
