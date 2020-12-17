@@ -28,6 +28,9 @@ public class MenuServiceImpl implements MenuService {
     public JSONObject selMenuPage(int pageSize,int pageNumber){
         PageHelper.startPage(pageSize/pageNumber+1,pageNumber);
         List<Menu> restMenusList = menuMapper.selMenuPage();
+        for(int i=0;i<restMenusList.size();i++){
+            System.out.println(restMenusList.get(i).toString());
+        }
         PageInfo pageInfo = new PageInfo(restMenusList);
         JSONObject resultJson = new JSONObject();
         resultJson.put("rows",pageInfo.getList());
@@ -63,7 +66,6 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public JSONObject updateMenu(Menu menu) {
-        System.out.println(menu.toString() );
         int restValue = menuMapper.updateMenu(menu);
         return null;
     }

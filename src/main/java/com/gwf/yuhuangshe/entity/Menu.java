@@ -1,11 +1,19 @@
 package com.gwf.yuhuangshe.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Menu {
+    @JsonProperty
     private Integer MId;
+    @JsonProperty
     private String MTitle;
+    @JsonProperty
     private String MValue;
+    @JsonProperty
     private Integer MSort;
+    @JsonProperty
     private String MUrl;
+    @JsonProperty
     private String MOther;
 
     public Menu() {
