@@ -2,89 +2,79 @@ package com.gwf.yuhuangshe.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class Menu {
     @JsonProperty
-    private Integer MId;
+    private Integer id;
     @JsonProperty
-    private String MTitle;
+    private String name;
     @JsonProperty
-    private String MValue;
+    private String url;
     @JsonProperty
-    private Integer MSort;
+    private Integer lev;
     @JsonProperty
-    private String MUrl;
-    @JsonProperty
-    private String MOther;
+    private Integer pid;
+    private List<Menu> Menu;
+//getandset方法
 
     public Menu() {
     }
 
-    public Menu(Integer MId, String MTitle, String MValue, Integer MSort, String MUrl, String MOther) {
-        this.MId = MId;
-        this.MTitle = MTitle;
-        this.MValue = MValue;
-        this.MSort = MSort;
-        this.MUrl = MUrl;
-        this.MOther = MOther;
+    public Menu(Integer id, String name, String url, Integer lev, Integer pid, List<Menu> menu) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+        this.lev = lev;
+        this.pid = pid;
+        Menu = menu;
     }
 
-    public Integer getMId() {
-        return MId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMId(Integer MId) {
-        this.MId = MId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getMTitle() {
-        return MTitle;
+    public String getName() {
+        return name;
     }
 
-    public void setMTitle(String MTitle) {
-        this.MTitle = MTitle;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMValue() {
-        return MValue;
+    public String getUrl() {
+        return url;
     }
 
-    public void setMValue(String MValue) {
-        this.MValue = MValue;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public Integer getMSort() {
-        return MSort;
+    public Integer getLev() {
+        return lev;
     }
 
-    public void setMSort(Integer MSort) {
-        this.MSort = MSort;
+    public void setLev(Integer lev) {
+        this.lev = lev;
     }
 
-    public String getMUrl() {
-        return MUrl;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setMUrl(String MUrl) {
-        this.MUrl = MUrl;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-    public String getMOther() {
-        return MOther;
+    public List<com.gwf.yuhuangshe.entity.Menu> getMenu() {
+        return Menu;
     }
 
-    public void setMOther(String MOther) {
-        this.MOther = MOther;
-    }
-
-    @Override
-    public String toString() {
-        return "Menu{" +
-                "MId=" + MId +
-                ", MTitle='" + MTitle + '\'' +
-                ", MValue='" + MValue + '\'' +
-                ", MSort=" + MSort +
-                ", MUrl='" + MUrl + '\'' +
-                ", MOther='" + MOther + '\'' +
-                '}';
+    public void setMenu(List<com.gwf.yuhuangshe.entity.Menu> menu) {
+        Menu = menu;
     }
 }

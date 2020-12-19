@@ -4,12 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.entity.Menu;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MenuService {
-    public JSONObject selMenu();
-    public JSONObject selMenuById(int MId);
-    public JSONObject delMenuById(int MId);
-    public JSONObject insertMenu(Menu menu);
-    public JSONObject updateMenu(Menu menu);
-    public JSONObject selMenuPage(int pageSize,int pageNumber);
+    List<Menu> menuone(Integer userid);
+
+    List<Menu> menutwo(Integer userid,Menu Menuone);
 }

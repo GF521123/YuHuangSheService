@@ -16,58 +16,12 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuMapper menuMapper;
     @Override
-    public JSONObject selMenu(){
-        List<Menu> restMenusList = menuMapper.selMenu();
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("rows",restMenusList);
-        resultJson.put("total",menuMapper.selMenuNum());
-
-        return resultJson;
+    public List<Menu> menuone(Integer userid) {
+        return menuMapper.menuone(userid);
     }
 
-    public JSONObject selMenuPage(int pageSize,int pageNumber){
-        PageHelper.startPage(pageSize/pageNumber+1,pageNumber);
-        List<Menu> restMenusList = menuMapper.selMenuPage();
-        for(int i=0;i<restMenusList.size();i++){
-            System.out.println(restMenusList.get(i).toString());
-        }
-        PageInfo pageInfo = new PageInfo(restMenusList);
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("rows",pageInfo.getList());
-        resultJson.put("total",menuMapper.selMenuNum());
-        return resultJson;
-    }
-
-    @Override
-    public JSONObject selMenuById(int MId) {
-        List<Menu> menuList = menuMapper.selMenu();
-//        if()
-        return null;
-    }
-
-    @Override
-    public JSONObject delMenuById(int MId) {
-        int rest = menuMapper.delMenuById( MId);
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("code",0);
-        if(rest == 1) {
-            resultJson.put("msg", "删除成功");
-        }else{
-            resultJson.put("msg", "删除失败");
-        }
-        return resultJson;
-    }
-
-    @Override
-    public JSONObject insertMenu(Menu menu) {
-        int restValue = menuMapper.insertMenu(menu);
-        return null;
-    }
-
-    @Override
-    public JSONObject updateMenu(Menu menu) {
-        int restValue = menuMapper.updateMenu(menu);
-        return null;
+    public List<Menu> menutwo(Integer userid,Menu Menuone) {
+        return menuMapper.menutwo(userid,Menuone);
     }
 
 }

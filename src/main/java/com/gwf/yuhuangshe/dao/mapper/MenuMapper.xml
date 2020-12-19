@@ -1,71 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gwf.yuhuangshe.dao.MenuMapper">
-
-    <resultMap id="MenuMap" type="com.gwf.yuhuangshe.entity.Menu">
-        <result column="MId" jdbcType="INTEGER" property="MId" />
-        <result column="MTitle" jdbcType="VARCHAR" property="MTitle" />
-        <result column="MValue" jdbcType="VARCHAR" property="MValue" />
-        <result column="MSort" jdbcType="INTEGER" property="MSort" />
-        <result column="MUrl" jdbcType="VARCHAR" property="MUrl" />
-        <result column="MOther" jdbcType="VARCHAR" property="MOther" />
+    <resultMap id="menuoneMap" type="com.gwf.yuhuangshe.entity.Menu">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="url" property="url"></result>
+        <result column="lev" property="lev"></result>
+        <result column="pid" property="pid"></result>
     </resultMap>
-    <sql id="Base_Menu_List" >
-        MId,MTitle,MValue,MSort,MUrl,MOther
-    </sql>
 
-    <select id="selMenu" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
-        select
-        <include refid="Base_Menu_List" />
-         from u_menu
-    </select>
-    <select id="selMenuPage" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
-        select MId,MTitle,MValue,MSort,MUrl,MOther from u_menu
-
-    </select>
-<!--    &#45;&#45;         limit #{pageSize},#{pageNumber}-->
-    <select id="selMenuNum" resultType="java.lang.Integer">
-        select count(*) from u_menu
+    <select id="menuone" resultMap="menuoneMap">
+        select distinct m.id,m.name,m.url,m.lev,m.pid
+        from users u left join role r on u.rid = r.id left join
+        role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
+        where u.id = #{userid} and lev = 1
     </select>
 
-    <select id="selMenuById" resultMap="MenuMap" resultType="com.gwf.yuhuangshe.entity.Menu">
-        select MId,MTitle,MValue,MSort,MUrl,MOther from u_menu where MId = #{MId}
+    <select id="menutwo" resultMap="menuoneMap">
+        select distinct m.id,m.name,m.url,m.lev,m.pid
+        from users u left join role r on u.rid = r.id left join
+        role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
+        where u.id = #{userid} and lev = 2 and m.pid =#{Menuone.id}
     </select>
-
-<!--    insertMenu-->
-    <insert id="insertMenu" parameterType="com.gwf.yuhuangshe.entity.Menu">
-        insert into u_menu(MTitle,MValue,MSort,MUrl,MOther)
-         values(#{MTitle},#{MValue},#{MSort},#{MUrl},#{MOther})
-    </insert>
-
-    <update id="updateMenu">
-        update u_menu
-        <trim prefix="set" suffixOverrides=",">
-            <if test="MTitle != null and MTitle != ''">
-                MTitle = #{MTitle} ,
-            </if>
-            <if test="MValue != null and MValue != ''">
-                MValue = #{MValue} ,
-            </if>
-            <if test="MSort != null and MSort != ''">
-                MSort = #{MSort} ,
-            </if>
-            <if test="MUrl != null and MUrl != ''">
-                MUrl = #{MUrl} ,
-            </if>
-            <if test="MOther != null and MOther != ''">
-                MOther = #{MOther}
-            </if>
-        </trim>
-        <where>
-            <if test="MId != null and MId != ''">
-                MId = #{MId}
-            </if>
-        </where>
-    </update>
-    <delete id="delMenuById">
-        delete  from u_menu where MId=#{MId}
-    </delete>
 </mapper>
 
 
