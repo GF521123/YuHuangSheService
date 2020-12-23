@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MenuController {
     public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid);
-    public JSONObject selMenus();
+    public JSONObject selMenus(int page, int pageSize);
 }

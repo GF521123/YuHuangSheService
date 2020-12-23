@@ -27,10 +27,17 @@ public class MenuServiceImpl implements MenuService {
         }
         return Menuone;
     }
-    public JSONObject selMenus(){
+    public JSONObject selMenus(int page, int pageSize){
+
         JSONObject resultJson = new JSONObject();
+        PageHelper.startPage(page, pageSize);
+
         List<Menu> menuList = menuMapper.selMenus();
-        resultJson.put("menuList",menuList);
+        PageInfo<Menu> pageInfo = new PageInfo<>(menuList);
+//        return pageInfo;
+
+        resultJson.put("toal",pageInfo.getTotal());
+        resultJson.put("rows",pageInfo.getList());
         return resultJson;
     }
 }
