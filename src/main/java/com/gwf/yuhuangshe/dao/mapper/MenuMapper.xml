@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gwf.yuhuangshe.dao.MenuMapper">
-    <resultMap id="menuoneMap" type="com.gwf.yuhuangshe.entity.Menu">
+    <resultMap id="menuMap" type="com.gwf.yuhuangshe.entity.Menu">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>
         <result column="url" property="url"></result>
@@ -9,18 +9,23 @@
         <result column="pid" property="pid"></result>
     </resultMap>
 
-    <select id="menuone" resultMap="menuoneMap">
+    <select id="menuone" resultMap="menuMap">
         select distinct m.id,m.name,m.url,m.lev,m.pid
         from users u left join role r on u.rid = r.id left join
         role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
         where u.id = #{userid} and lev = 1
     </select>
 
-    <select id="menutwo" resultMap="menuoneMap">
+    <select id="menutwo" resultMap="menuMap">
         select distinct m.id,m.name,m.url,m.lev,m.pid
         from users u left join role r on u.rid = r.id left join
         role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
         where u.id = #{userid} and lev = 2 and m.pid =#{Menuone.id}
+    </select>
+
+    <select id="selMenus" resultMap="menuMap">
+        select  id,name,url,lev,pid
+        from  menu
     </select>
 </mapper>
 

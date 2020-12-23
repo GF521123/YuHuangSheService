@@ -26,6 +26,11 @@ public class MenuServiceImpl implements MenuService {
             menu.setMenu(Menutwo);
         }
         return Menuone;
-
+    }
+    public JSONObject selMenus(){
+        JSONObject resultJson = new JSONObject();
+        List<Menu> menuList = menuMapper.selMenus();
+        resultJson.put("menuList",menuList);
+        return resultJson;
     }
 }

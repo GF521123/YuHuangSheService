@@ -22,4 +22,7 @@ public class MenuControllerImpl implements MenuController {
     public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid){
         return menuService.MenuInitGet(userid);
     }
+    @RequestMapping("/selMenus")
+    @ResponseBody
+    public JSONObject selMenus(){return menuService.selMenus();}
 }

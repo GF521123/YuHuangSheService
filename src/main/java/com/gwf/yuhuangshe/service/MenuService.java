@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface MenuService {
     public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid);
+    public JSONObject selMenus();
 }
