@@ -24,5 +24,5 @@ public class MenuControllerImpl implements MenuController {
     }
     @RequestMapping("/selMenus")
     @ResponseBody
-    public JSONObject selMenus(int page, int pageSize){return menuService.selMenus(page,pageSize);}
+    public JSONObject selMenus(Integer page, Integer pageSize){return menuService.selMenus(page,pageSize);}
 }

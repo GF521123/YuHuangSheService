@@ -27,8 +27,8 @@ public class MenuServiceImpl implements MenuService {
         }
         return Menuone;
     }
-    public JSONObject selMenus(int page, int pageSize){
-
+    public JSONObject selMenus(Integer page, Integer pageSize){
+        System.out.println(page+" "+pageSize);
         JSONObject resultJson = new JSONObject();
         PageHelper.startPage(page, pageSize);
 
@@ -36,7 +36,7 @@ public class MenuServiceImpl implements MenuService {
         PageInfo<Menu> pageInfo = new PageInfo<>(menuList);
 //        return pageInfo;
 
-        resultJson.put("toal",pageInfo.getTotal());
+        resultJson.put("total",pageInfo.getTotal());
         resultJson.put("rows",pageInfo.getList());
         return resultJson;
     }
