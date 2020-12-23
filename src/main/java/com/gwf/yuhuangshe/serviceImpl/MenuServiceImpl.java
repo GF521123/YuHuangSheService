@@ -15,13 +15,17 @@ import java.util.List;
 public class MenuServiceImpl implements MenuService {
     @Autowired
     private MenuMapper menuMapper;
+
     @Override
-    public List<Menu> menuone(Integer userid) {
-        return menuMapper.menuone(userid);
-    }
+    public List<Menu> MenuInitGet(Integer userid){
+        JSONObject resultJson = new JSONObject();
+        userid = 1;
+        List<Menu> Menuone = menuMapper.menuone(userid);
+        for (Menu menu : Menuone) {
+            List<Menu> Menutwo = menuMapper.menutwo(userid,menu);
+            menu.setMenu(Menutwo);
+        }
+        return Menuone;
 
-    public List<Menu> menutwo(Integer userid,Menu Menuone) {
-        return menuMapper.menutwo(userid,Menuone);
     }
-
 }

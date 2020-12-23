@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 public interface MenuController {
-    public List<Menu> showmenu(@RequestParam("userid")Integer userid);
+    public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid);
 }

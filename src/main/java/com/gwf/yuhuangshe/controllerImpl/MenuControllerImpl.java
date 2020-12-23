@@ -19,12 +19,7 @@ public class MenuControllerImpl implements MenuController {
 
     @RequestMapping("/AllMenu")
     @ResponseBody
-    public List<Menu> showmenu(@RequestParam("userid")Integer userid){
-        List<Menu> Menuone = menuService.menuone(userid);
-        for (Menu menu : Menuone) {
-            List<Menu> Menutwo = menuService.menutwo(userid,menu);
-            menu.setMenu(Menutwo);
-        }
-        return Menuone;
+    public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid){
+        return menuService.MenuInitGet(userid);
     }
 }
