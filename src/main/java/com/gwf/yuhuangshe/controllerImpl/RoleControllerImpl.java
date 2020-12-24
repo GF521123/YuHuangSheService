@@ -16,7 +16,7 @@ public class RoleControllerImpl implements RoleController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping("/selRole")
+    @RequestMapping("/selRoles")
     @ResponseBody
     @Override
     public JSONObject selRoles(Integer page, Integer pageSize) {
