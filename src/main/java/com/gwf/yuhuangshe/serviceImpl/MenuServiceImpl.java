@@ -80,4 +80,19 @@ public class MenuServiceImpl implements MenuService {
         }
         return resultJson;
     }
+    /*
+     * menu 增加
+     */
+    @Override
+    public JSONObject InsertMenuById( Menu menu){
+        JSONObject resultJson = new JSONObject();
+        int resultDel = menuMapper.InsertMenuById( menu);
+        resultJson.put("code",0);
+        if(resultDel == 1){
+            resultJson.put("msg","修改成功");
+        }else{
+            resultJson.put("msg","修改失败");
+        }
+        return resultJson;
+    }
 }

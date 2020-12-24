@@ -27,4 +27,8 @@ public interface MenuService {
      * 根据menu的id修改菜单
      */
     public JSONObject UpdateMenuById( Menu menu);
+    /*
+     * menu 增加
+     */
+    public JSONObject InsertMenuById( Menu menu);
 }

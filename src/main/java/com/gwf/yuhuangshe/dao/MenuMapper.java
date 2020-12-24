@@ -26,4 +26,8 @@ public interface MenuMapper {
      * 根据menu的id修改菜单
      */
     int UpdateMenuById( Menu menu);
+    /*
+     * menu 增加
+     */
+    int InsertMenuById( Menu menu);
 }

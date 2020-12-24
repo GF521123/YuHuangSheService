@@ -49,4 +49,12 @@ public class MenuControllerImpl implements MenuController {
     public JSONObject UpdateMenuById( Menu menu){
         return menuService.UpdateMenuById( menu);
     }
+    /*
+     * menu 增加
+     */
+    @RequestMapping("/insertMenu")
+    @ResponseBody
+    public JSONObject InsertMenuById( Menu menu){
+        return menuService.InsertMenuById( menu);
+    }
 }
