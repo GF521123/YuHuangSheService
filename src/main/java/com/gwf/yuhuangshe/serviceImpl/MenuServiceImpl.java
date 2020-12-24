@@ -35,14 +35,10 @@ public class MenuServiceImpl implements MenuService {
      */
     @Override
     public JSONObject selMenus(Integer page, Integer pageSize){
-        System.out.println(page+" "+pageSize);
         JSONObject resultJson = new JSONObject();
         PageHelper.startPage(page, pageSize);
-
         List<Menu> menuList = menuMapper.selMenus();
         PageInfo<Menu> pageInfo = new PageInfo<>(menuList);
-//        return pageInfo;
-
         resultJson.put("total",pageInfo.getTotal());
         resultJson.put("rows",pageInfo.getList());
         return resultJson;
@@ -55,7 +51,6 @@ public class MenuServiceImpl implements MenuService {
     public JSONObject delMenuById( Menu menu){
         JSONObject resultJson = new JSONObject();
         int resultDel = menuMapper.delMenuById( menu);
-        System.out.println(resultDel);
         resultJson.put("code",0);
         if(resultDel == 1){
             resultJson.put("msg","删除成功");
