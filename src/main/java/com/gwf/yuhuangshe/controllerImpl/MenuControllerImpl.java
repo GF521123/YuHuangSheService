@@ -17,17 +17,36 @@ public class MenuControllerImpl implements MenuController {
     @Autowired
     private MenuService menuService;
 
+    /*
+     * 系统菜单加载 查询菜单
+     */
     @RequestMapping("/AllMenu")
     @ResponseBody
     public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid){
         return menuService.MenuInitGet(userid);
     }
+    /*
+     * 查询menu菜单
+     */
     @RequestMapping("/selMenus")
     @ResponseBody
     public JSONObject selMenus(Integer page, Integer pageSize){return menuService.selMenus(page,pageSize);}
+
+    /*
+     * 根据menu的id删除菜单
+     */
     @RequestMapping("/delMenuById")
     @ResponseBody
     public JSONObject delMenuById( Menu menu){
         return menuService.delMenuById( menu);
+    }
+
+    /*
+     * 根据menu的id修改菜单
+     */
+    @RequestMapping("/updateMenuById")
+    @ResponseBody
+    public JSONObject UpdateMenuById( Menu menu){
+        return menuService.UpdateMenuById( menu);
     }
 }

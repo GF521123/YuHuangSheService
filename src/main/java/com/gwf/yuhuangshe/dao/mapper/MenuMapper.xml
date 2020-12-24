@@ -30,6 +30,16 @@
     <delete id="delMenuById">
         delete from menu where id=#{id}
     </delete>
+    <update id="UpdateMenuById">
+        UPDATE menu
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null"> name = #{name},</if>
+            <if test="url != null"> url = #{url },</if>
+            <if test="lev != null"> lev = #{lev},</if>
+            <if test="pid != null"> pid = #{pid},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
 </mapper>
 
 
