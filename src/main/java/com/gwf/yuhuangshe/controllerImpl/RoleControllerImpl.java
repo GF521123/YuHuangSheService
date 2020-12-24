@@ -2,6 +2,7 @@ package com.gwf.yuhuangshe.controllerImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.controller.RoleController;
+import com.gwf.yuhuangshe.entity.Role;
 import com.gwf.yuhuangshe.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,4 +23,12 @@ public class RoleControllerImpl implements RoleController {
     public JSONObject selRoles(Integer page, Integer pageSize) {
         return roleService.selRoles(page,pageSize);
     }
+
+    @RequestMapping("/insertRole")
+    @ResponseBody
+    @Override
+    public JSONObject insertRole(Role role) {
+        return roleService.insertRole(role);
+    }
+
 }

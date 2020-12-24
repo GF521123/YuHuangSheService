@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface RoleMapper {
     List<Role> selRoles();
+    int insertRole(Role role);
 }
