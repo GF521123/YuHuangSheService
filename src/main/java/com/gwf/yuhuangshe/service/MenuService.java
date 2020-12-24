@@ -11,4 +11,5 @@ import java.util.List;
 public interface MenuService {
     public List<Menu> MenuInitGet(@RequestParam("userid")Integer userid);
     public JSONObject selMenus(Integer page, Integer pageSize);
+    public JSONObject delMenuById( Menu menu);
 }

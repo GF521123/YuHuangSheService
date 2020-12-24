@@ -40,4 +40,16 @@ public class MenuServiceImpl implements MenuService {
         resultJson.put("rows",pageInfo.getList());
         return resultJson;
     }
+    public JSONObject delMenuById( Menu menu){
+        JSONObject resultJson = new JSONObject();
+        int resultDel = menuMapper.delMenuById( menu);
+        System.out.println(resultDel);
+        resultJson.put("code",0);
+        if(resultDel == 1){
+            resultJson.put("msg","删除成功");
+        }else{
+            resultJson.put("msg","删除失败");
+        }
+        return resultJson;
+    }
 }

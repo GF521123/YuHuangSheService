@@ -16,4 +16,5 @@ public interface MenuMapper {
      * 查询menu菜单
      */
     List<Menu> selMenus();
+    int delMenuById( Menu menu);
 }

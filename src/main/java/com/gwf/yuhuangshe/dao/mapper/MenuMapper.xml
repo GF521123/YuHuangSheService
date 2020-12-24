@@ -27,6 +27,9 @@
         select  id,name,url,lev,pid
         from  menu
     </select>
+    <delete id="delMenuById">
+        delete from menu where id=#{id}
+    </delete>
 </mapper>
 
 
