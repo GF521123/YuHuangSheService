@@ -12,15 +12,17 @@
     <select id="menuone" resultMap="menuMap">
         select distinct m.id,m.name,m.url,m.lev,m.pid
         from users u left join role r on u.rid = r.id left join
-        role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
+        role_menu rm on r.rname = rm.rname left join menu m on rm.mname = m.name
         where u.id = #{userid} and lev = 1
+        and rm.state =1
     </select>
 
     <select id="menutwo" resultMap="menuMap">
         select distinct m.id,m.name,m.url,m.lev,m.pid
         from users u left join role r on u.rid = r.id left join
-        role_menu rm on r.id = rm.rid left join menu m on rm.mid = m.id
+        role_menu rm on r.rname = rm.rname left join menu m on rm.mname = m.name
         where u.id = #{userid} and lev = 2 and m.pid =#{Menuone.id}
+        and rm.state =1
     </select>
 
     <select id="selMenus" resultMap="menuMap">

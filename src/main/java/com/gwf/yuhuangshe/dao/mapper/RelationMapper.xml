@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gwf.yuhuangshe.dao.RelationMapper">
+    <resultMap id="relationMap" type="com.gwf.yuhuangshe.entity.Relation">
+        <id column="id" property="id"></id>
+        <result column="rname" property="rname"></result>
+        <result column="mname" property="mname"></result>
+        <result column="state" property="state"></result>
+    </resultMap>
+
+
+    <select id="selRelations" resultMap="relationMap">
+        select  id,rname,mname,state
+        from  role_menu
+    </select>
+    <delete id="delRelationById">
+        delete from role_menu where id=#{id}
+    </delete>
+    <update id="updateRelationById">
+        UPDATE role_menu
+        <trim prefix="set" suffixOverrides=",">
+            <if test="rname != null"> rname = #{rname},</if>
+            <if test="mname != null"> mname = #{mname },</if>
+            <if test="state != null"> state = #{state},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+    <insert id="insertRelation">
+        insert into
+        role_menu(rname,title,state)
+        values(#{rname},#{mname},#{state})
+    </insert>
+</mapper>

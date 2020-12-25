@@ -1,6 +1,8 @@
 package com.gwf.yuhuangshe.entity;
 
-
+/*
+ * 角色
+ */
 public class Role {
 
   private Integer id;//编号

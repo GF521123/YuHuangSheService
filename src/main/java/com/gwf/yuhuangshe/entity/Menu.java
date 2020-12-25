@@ -3,7 +3,9 @@ package com.gwf.yuhuangshe.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-
+/*
+ * 页面菜单
+ */
 public class Menu {
     @JsonProperty
     private Integer id;

@@ -1,6 +1,8 @@
 package com.gwf.yuhuangshe.entity;
 
-
+/*
+ * 用户
+ */
 public class User {
     private int UId;
     private String UName;
