@@ -37,6 +37,18 @@ public class RoleServiceImpl implements RoleService {
         int resultInsert = roleMapper.insertRole( role);
         resultJson.put("code",0);
         if(resultInsert == 1){
+            resultJson.put("msg","新建成功");
+        }else{
+            resultJson.put("msg","新建失败");
+        }
+        return resultJson;
+    }
+    @Override
+    public JSONObject updateRoleById(Role role){
+        JSONObject resultJson = new JSONObject();
+        int resultUpdate = roleMapper.updateRoleById( role);
+        resultJson.put("code",0);
+        if(resultUpdate == 1){
             resultJson.put("msg","修改成功");
         }else{
             resultJson.put("msg","修改失败");
@@ -44,4 +56,16 @@ public class RoleServiceImpl implements RoleService {
         return resultJson;
     }
 
+    @Override
+    public JSONObject delRoleById(Role role){
+        JSONObject resultJson = new JSONObject();
+        int resultUpdate = roleMapper.delRoleById( role);
+        resultJson.put("code",0);
+        if(resultUpdate == 1){
+            resultJson.put("msg","删除成功");
+        }else{
+            resultJson.put("msg","删除失败");
+        }
+        return resultJson;
+    }
 }

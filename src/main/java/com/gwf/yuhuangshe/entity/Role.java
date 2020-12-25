@@ -6,7 +6,7 @@ public class Role {
   private Integer id;//编号
   private String rname;//校色
   private String title;//说明
-  private int state;//状态：0不启用(默认)，1启用
+  private Integer state;//状态：0不启用(默认)，1启用
 
 
   public Integer getId() {
@@ -36,11 +36,11 @@ public class Role {
   }
 
 
-  public int getState() {
+  public Integer getState() {
     return state;
   }
 
-  public void setState(int state) {
+  public void setState(Integer state) {
     this.state = state;
   }
 

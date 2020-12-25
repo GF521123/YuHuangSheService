@@ -10,4 +10,6 @@ import java.util.List;
 public interface RoleController {
     public JSONObject selRoles(Integer page, Integer pageSize);
     public JSONObject insertRole(Role role);
+    public JSONObject updateRoleById(Role role);
+    public JSONObject delRoleById(Role role);
 }

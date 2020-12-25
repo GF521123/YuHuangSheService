@@ -31,4 +31,16 @@ public class RoleControllerImpl implements RoleController {
         return roleService.insertRole(role);
     }
 
+    @RequestMapping("/updateRoleById")
+    @ResponseBody
+    @Override
+    public JSONObject updateRoleById(Role role) {
+        return roleService.updateRoleById(role);
+    }
+    @RequestMapping("/delRoleById")
+    @ResponseBody
+    @Override
+    public JSONObject delRoleById(Role role){
+        return roleService.delRoleById(role);
+    }
 }

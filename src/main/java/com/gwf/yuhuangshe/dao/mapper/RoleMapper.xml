@@ -13,22 +13,21 @@
         select  id,rname,title,state
         from  role
     </select>
-    <delete id="delMenuById">
-        delete from menu where id=#{id}
+    <delete id="delRoleById">
+        delete from role where id=#{id}
     </delete>
-    <update id="UpdateMenuById">
-        UPDATE menu
+    <update id="updateRoleById">
+        UPDATE role
         <trim prefix="set" suffixOverrides=",">
-            <if test="name != null"> name = #{name},</if>
-            <if test="url != null"> url = #{url },</if>
-            <if test="lev != null"> lev = #{lev},</if>
-            <if test="pid != null"> pid = #{pid},</if>
+            <if test="rname != null"> rname = #{rname},</if>
+            <if test="title != null"> title = #{title },</if>
+            <if test="state != null"> state = #{state},</if>
         </trim>
         WHERE id = #{id}
     </update>
-    <insert id="InsertMenuById">
+    <insert id="insertRole">
         insert into
-        menu(name,url,lev,pid)
-        values(#{name},#{url},#{lev},#{pid})
+        role(rname,title,state)
+        values(#{rname},#{title},#{state})
     </insert>
 </mapper>
