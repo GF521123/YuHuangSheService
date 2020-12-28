@@ -27,7 +27,7 @@
     </update>
     <insert id="insertRelation">
         insert into
-        role_menu(rname,title,state)
+        role_menu(rname,mname,state)
         values(#{rname},#{mname},#{state})
     </insert>
 </mapper>
