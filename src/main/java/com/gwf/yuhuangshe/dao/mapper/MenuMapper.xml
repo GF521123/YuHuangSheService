@@ -6,27 +6,28 @@
         <result column="name" property="name"></result>
         <result column="url" property="url"></result>
         <result column="lev" property="lev"></result>
-        <result column="pid" property="pid"></result>
+        <result column="pname" property="pname"></result>
+        <result column="state" property="state"></result>
     </resultMap>
 
     <select id="menuone" resultMap="menuMap">
-        select distinct m.id,m.name,m.url,m.lev,m.pid
+        select distinct m.id,m.name,m.url,m.lev,m.pname
         from users u left join role r on u.rid = r.id left join
         role_menu rm on r.rname = rm.rname left join menu m on rm.mname = m.name
         where u.id = #{userid} and lev = 1
-        and rm.state =1
+        and rm.state =1 and m.state = 1
     </select>
 
     <select id="menutwo" resultMap="menuMap">
-        select distinct m.id,m.name,m.url,m.lev,m.pid
+        select distinct m.id,m.name,m.url,m.lev,m.pname
         from users u left join role r on u.rid = r.id left join
         role_menu rm on r.rname = rm.rname left join menu m on rm.mname = m.name
-        where u.id = #{userid} and lev = 2 and m.pid =#{Menuone.id}
-        and rm.state =1
+        where u.id = #{userid} and lev = 2 and m.pname =#{Menuone.name}
+        and rm.state =1 and m.state = 1
     </select>
 
     <select id="selMenus" resultMap="menuMap">
-        select  id,name,url,lev,pid
+        select  id,name,url,lev,pname,state
         from  menu
     </select>
     <delete id="delMenuById">
@@ -38,13 +39,14 @@
             <if test="name != null"> name = #{name},</if>
             <if test="url != null"> url = #{url },</if>
             <if test="lev != null"> lev = #{lev},</if>
-            <if test="pid != null"> pid = #{pid},</if>
+            <if test="pname != null"> pname = #{pname},</if>
+            <if test="state != null"> state = #{state},</if>
         </trim>
         WHERE id = #{id}
     </update>
     <insert id="InsertMenuById">
         insert into
-        menu(name,url,lev,pid)
-        values(#{name},#{url},#{lev},#{pid})
+        menu(name,url,lev,pname,state)
+        values(#{name},#{url},#{lev},#{pname},#{state})
     </insert>
 </mapper>

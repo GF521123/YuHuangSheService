@@ -44,11 +44,11 @@ public class Relation {
     this.mname = mname;
   }
 
-  public Integer getStat() {
+  public Integer getState() {
     return state;
   }
 
-  public void setStat(Integer state) {
+  public void setState(Integer state) {
     this.state = state;
   }
 }

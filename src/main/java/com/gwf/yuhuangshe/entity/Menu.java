@@ -8,27 +8,30 @@ import java.util.List;
  */
 public class Menu {
     @JsonProperty
-    private Integer id;
+    private Integer id;//编号
     @JsonProperty
-    private String name;
+    private String name;//菜单页面菜单名
     @JsonProperty
-    private String url;
+    private String url;//菜单页面地址
     @JsonProperty
-    private Integer lev;
+    private Integer lev;//菜单页面等级
     @JsonProperty
-    private Integer pid;
+    private String pname;//菜单父页面菜单
+    @JsonProperty
+    private Integer state;//状态 默认0未启用   1启用
     private List<Menu> Menu;
 //getandset方法
 
     public Menu() {
     }
 
-    public Menu(Integer id, String name, String url, Integer lev, Integer pid, List<Menu> menu) {
+    public Menu(Integer id, String name, String url, Integer lev, String pname, Integer state, List<com.gwf.yuhuangshe.entity.Menu> menu) {
         this.id = id;
         this.name = name;
         this.url = url;
         this.lev = lev;
-        this.pid = pid;
+        this.pname = pname;
+        this.state = state;
         Menu = menu;
     }
 
@@ -64,12 +67,20 @@ public class Menu {
         this.lev = lev;
     }
 
-    public Integer getPid() {
-        return pid;
+    public String getPname() {
+        return pname;
     }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public List<com.gwf.yuhuangshe.entity.Menu> getMenu() {
