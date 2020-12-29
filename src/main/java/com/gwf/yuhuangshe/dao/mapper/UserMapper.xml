@@ -11,7 +11,7 @@
 
 
     <select id="login" resultMap="UserMap" resultType="com.gwf.yuhuangshe.entity.User">
-        select * from u_operators where  UName = #{UName} and UPassword = #{UPassword}
+        select * from users where  UName = #{UName} and UPassword = #{UPassword}
     </select>
 
 </mapper>

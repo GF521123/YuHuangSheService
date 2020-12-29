@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gwf.yuhuangshe.dao.NotesMapper">
+    <resultMap id="notesMap" type="com.gwf.yuhuangshe.entity.Notes">
+        <id column="id" property="id"></id>
+        <result column="uName" property="uName"></result>
+        <result column="noteType" property="noteType"></result>
+        <result column="notes" property="notes"></result>
+        <result column="createTime" property="createTime"></result>
+    </resultMap>
+    <select id="selNotes" resultMap="notesMap">
+           SELECT u.username,nt.value, n.notes,n.createTime
+            FROM notes n ,users u,note_type nt WHERE
+                n.u_id = u.id and n.note_Type = nt.id
+
+    </select>
+    <delete id="delNoteTypeById">
+        delete from note_type where id=#{id}
+    </delete>
+    <update id="updateNoteTypeById">
+        UPDATE note_type
+        <trim prefix="set" suffixOverrides=",">
+            <if test="text != null"> text = #{text},</if>
+            <if test="state != null"> state = #{state },</if>
+            <if test="value != null"> value = #{value},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+    <insert id="insertNoteType">
+        insert into
+        note_type(text,state,value)
+        values(#{text},#{state},#{value})
+    </insert>
+</mapper>
