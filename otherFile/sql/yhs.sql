@@ -11,46 +11,94 @@
  Target Server Version : 50527
  File Encoding         : 65001
 
- Date: 11/12/2020 17:03:25
+ Date: 28/12/2020 17:27:52
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for u_menu
+-- Table structure for menu
 -- ----------------------------
-DROP TABLE IF EXISTS `u_menu`;
-CREATE TABLE `u_menu`  (
-  `MId` int(11) NOT NULL,
-  `MTitle` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '标签，显示',
-  `MValue` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '菜单名称，关联',
-  `MSort` int(255) NULL DEFAULT NULL COMMENT '排序用',
-  `MUrl` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT 'url路径',
-  `MOther` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '字段备用\r\n',
-  PRIMARY KEY (`MId`) USING BTREE
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu`  (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `lev` int(255) NULL DEFAULT NULL,
+  `pname` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `state` int(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = gb2312 COLLATE = gb2312_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of menu
+-- ----------------------------
+INSERT INTO `menu` VALUES (1, '系统目录', '', 1, '', 1);
+INSERT INTO `menu` VALUES (2, '页面菜单', 'menu.html', 2, '系统目录', 1);
+INSERT INTO `menu` VALUES (3, '角色菜单', 'role.html', 2, '系统目录', 1);
+INSERT INTO `menu` VALUES (4, '关联菜单', 'relation.html', 2, '系统目录', 1);
+INSERT INTO `menu` VALUES (5, '工具目录', '', 1, '', 1);
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `rname` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '角色',
+  `title` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '描述',
+  `state` int(1) UNSIGNED ZEROFILL NULL DEFAULT NULL COMMENT '状态：0不启用（默认）1启用',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = gb2312 COLLATE = gb2312_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES (1, '管理员', '', 1);
+
+-- ----------------------------
+-- Table structure for role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `role_menu`;
+CREATE TABLE `role_menu`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `rname` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '角色名称',
+  `mname` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL COMMENT '菜单名称',
+  `state` int(1) NULL DEFAULT NULL COMMENT '状态 1启用',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = gb2312 COLLATE = gb2312_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of role_menu
+-- ----------------------------
+INSERT INTO `role_menu` VALUES (1, '管理员', '系统目录', 1);
+INSERT INTO `role_menu` VALUES (2, '管理员', '页面菜单', 1);
+INSERT INTO `role_menu` VALUES (3, '管理员', '角色菜单', 1);
+INSERT INTO `role_menu` VALUES (4, '管理员', '关联菜单', 1);
+INSERT INTO `role_menu` VALUES (6, '管理员', '工具目录', 1);
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`  (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `sex` int(255) NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `createtime` datetime NULL DEFAULT NULL,
+  `birthday` datetime NULL DEFAULT NULL,
+  `touxiang` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
+  `rid` int(11) NULL DEFAULT NULL,
+  `start` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = gb2312 COLLATE = gb2312_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of u_menu
+-- Records of users
 -- ----------------------------
-INSERT INTO `u_menu` VALUES (1, '测试', '测试', 50, 'home.html', NULL);
-
--- ----------------------------
--- Table structure for u_operators
--- ----------------------------
-DROP TABLE IF EXISTS `u_operators`;
-CREATE TABLE `u_operators`  (
-  `UId` int(11) NOT NULL AUTO_INCREMENT,
-  `UName` varchar(100) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
-  `UPassword` varchar(100) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
-  `UIphone` varchar(100) CHARACTER SET gb2312 COLLATE gb2312_bin NULL DEFAULT NULL,
-  PRIMARY KEY (`UId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = gb2312 COLLATE = gb2312_bin ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of u_operators
--- ----------------------------
-INSERT INTO `u_operators` VALUES (1, '123', '123', '123');
+INSERT INTO `users` VALUES (1, '123', '123', NULL, NULL, NULL, NULL, NULL, 1, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
