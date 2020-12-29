@@ -10,13 +10,13 @@
 
     <select id="selNoteTypes" resultMap="noteTypeMap">
         select  id,text,state,value
-        from  role_menu
+        from  note_type
     </select>
     <delete id="delNoteTypeById">
-        delete from role_menu where id=#{id}
+        delete from note_type where id=#{id}
     </delete>
     <update id="updateNoteTypeById">
-        UPDATE role_menu
+        UPDATE note_type
         <trim prefix="set" suffixOverrides=",">
             <if test="text != null"> text = #{text},</if>
             <if test="state != null"> state = #{state },</if>
@@ -26,7 +26,7 @@
     </update>
     <insert id="insertNoteType">
         insert into
-        role_menu(text,state,value)
+        note_type(text,state,value)
         values(#{text},#{state},#{value})
     </insert>
 </mapper>
