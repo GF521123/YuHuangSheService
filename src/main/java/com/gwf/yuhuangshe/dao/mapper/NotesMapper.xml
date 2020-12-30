@@ -3,15 +3,19 @@
 <mapper namespace="com.gwf.yuhuangshe.dao.NotesMapper">
     <resultMap id="notesMap" type="com.gwf.yuhuangshe.entity.Notes">
         <id column="id" property="id"></id>
-        <result column="uName" property="uName"></result>
-        <result column="noteType" property="noteType"></result>
-        <result column="notes" property="notes"></result>
+        <result column="UName" property="Uname"></result>
+        <result column="uId" property="u_id"></result>
+        <result column="notes" property="noteType"></result>
+        <result column="note_Type" property="noteTypeId"></result>
+        <result column="value" property="notes"></result>
+        <result column="test" property="test"></result>
         <result column="createTime" property="createTime"></result>
+        <result column="state" property="state"></result>
     </resultMap>
     <select id="selNotes" resultMap="notesMap">
-           SELECT u.username,nt.value, n.notes,n.createTime
+           SELECT n.id,n.test, u.UName,n.u_id, n.note_Type , n.notes,n.createTime ,nt.value,n.state
             FROM notes n ,users u,note_type nt WHERE
-                n.u_id = u.id and n.note_Type = nt.id
+                n.u_id = #{uId} and n.note_Type = nt.id
 
     </select>
     <delete id="delNoteTypeById">

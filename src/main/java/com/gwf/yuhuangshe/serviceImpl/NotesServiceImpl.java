@@ -4,22 +4,29 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.gwf.yuhuangshe.dao.NotesMapper;
-import com.gwf.yuhuangshe.entity.NoteType;
 import com.gwf.yuhuangshe.entity.Notes;
+import com.gwf.yuhuangshe.entity.User;
 import com.gwf.yuhuangshe.service.NotesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
-
+@Service
 public class NotesServiceImpl implements NotesService {
     @Autowired
     private NotesMapper notesMapper;
 
     @Override
-    public JSONObject selNotes(Integer page, Integer pageSize) {
+    public JSONObject selNotes(HttpServletRequest request, Integer page, Integer pageSize) {
         JSONObject resultJson = new JSONObject();
         PageHelper.startPage(page, pageSize);
-        List<Notes> roleList = notesMapper.selNotes();
+
+//        Integer request.getSession()
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userlogin");
+        List<Notes> roleList = notesMapper.selNotes(user.getUId());
         PageInfo<Notes> pageInfo = new PageInfo<>(roleList);
 
         resultJson.put("total",pageInfo.getTotal());

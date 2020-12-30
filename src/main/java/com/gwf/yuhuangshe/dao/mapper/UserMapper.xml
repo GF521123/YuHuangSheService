@@ -3,7 +3,7 @@
 <mapper namespace="com.gwf.yuhuangshe.dao.UserMapper">
 
     <resultMap id="UserMap" type="com.gwf.yuhuangshe.entity.User">
-        <result column="UId" jdbcType="INTEGER" property="UId" />
+        <result column="id" jdbcType="INTEGER" property="UId" />
         <result column="UName" jdbcType="VARCHAR" property="UName" />
         <result column="UPassword" jdbcType="VARCHAR" property="UPassword" />
         <result column="UIphone" jdbcType="VARCHAR" property="UIphone" />
