@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @ResponseBody
 public class UserLoginControllerImpl implements UserLoginController {
     @Autowired
     private UserLoginService loginService;
     @RequestMapping("/login")
-    public JSONObject login(User user){
-        return loginService.login(user);
+    public JSONObject login(HttpServletRequest request, User user){
+        return loginService.login(request,user);
     }
 }
