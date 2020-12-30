@@ -65,4 +65,12 @@ public class NoteTypeServiceImpl implements NoteTypeService {
         }
         return resultJson;
     }
+
+    @Override
+    public JSONObject selNoteTypeState() {
+        JSONObject resultJson = new JSONObject();
+        List<NoteType> roleList = noteTypeMapper.selNoteTypeState();
+        resultJson.put("NoteTypes",roleList);
+        return resultJson;
+    }
 }

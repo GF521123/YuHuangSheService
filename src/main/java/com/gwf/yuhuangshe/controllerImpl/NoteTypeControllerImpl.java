@@ -41,4 +41,10 @@ public class NoteTypeControllerImpl implements NoteTypeController{
     public JSONObject delNoteTypeById(NoteType noteType){
         return noteTypeService.delNoteTypeById(noteType);
     }
+    @RequestMapping("/selNoteTypeState")
+    @ResponseBody
+    @Override
+    public JSONObject selNoteTypeState() {
+        return noteTypeService.selNoteTypeState();
+    }
 }

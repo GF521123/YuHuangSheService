@@ -4,7 +4,7 @@
     <resultMap id="notesMap" type="com.gwf.yuhuangshe.entity.Notes">
         <id column="id" property="id"></id>
         <result column="UName" property="Uname"></result>
-        <result column="uId" property="u_id"></result>
+        <result column="Uid" property="u_id"></result>
         <result column="notes" property="noteType"></result>
         <result column="note_Type" property="noteTypeId"></result>
         <result column="value" property="notes"></result>
@@ -33,6 +33,6 @@
     <insert id="insertNote">
         insert into
         notes(u_id,note_Type,notes,createTime,state,test)
-        values(#{uId},#{noteTypeId},#{notes},#{createTime},#{state},#{test})
+        values(#{Uid},#{noteTypeId},#{notes},#{createTime},#{state},#{test})
     </insert>
 </mapper>

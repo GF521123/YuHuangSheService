@@ -12,6 +12,11 @@
         select  id,text,state,value
         from  note_type
     </select>
+    <select id="selNoteTypeState" resultMap="noteTypeMap">
+        select  id,text,state,value
+        from  note_type where state = 1
+    </select>
+
     <delete id="delNoteTypeById">
         delete from note_type where id=#{id}
     </delete>

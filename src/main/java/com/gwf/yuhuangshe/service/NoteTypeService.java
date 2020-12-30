@@ -10,4 +10,5 @@ public interface NoteTypeService {
     public JSONObject insertNoteType(NoteType noteType);
     public JSONObject updateNoteTypeById(NoteType noteType);
     public JSONObject delNoteTypeById(NoteType noteType);
+    public JSONObject selNoteTypeState();
 }

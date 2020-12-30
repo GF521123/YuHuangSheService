@@ -9,4 +9,5 @@ public interface NoteTypeMapper {
     int insertNoteType(NoteType noteType);
     int updateNoteTypeById(NoteType noteType);
     int delNoteTypeById(NoteType noteType);
+    List<NoteType> selNoteTypeState();
 }
