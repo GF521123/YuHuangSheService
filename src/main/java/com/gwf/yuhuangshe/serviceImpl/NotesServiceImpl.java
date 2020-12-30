@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 @Service
 public class NotesServiceImpl implements NotesService {
@@ -35,8 +36,20 @@ public class NotesServiceImpl implements NotesService {
     }
 
     @Override
-    public JSONObject insertNote(Notes notes) {
-        return null;
+    public JSONObject insertNote(HttpServletRequest request,Notes notes) {
+        JSONObject resultJson = new JSONObject();
+        HttpSession session = request.getSession();
+        notes.setCreateTime(new Date());
+        User user = (User) session.getAttribute("userlogin");
+        notes.setUid(user.getUId());
+        int restInsert =  notesMapper.insertNote(notes);
+        resultJson.put("code",0);
+        if(restInsert == 1){
+            resultJson.put("msg","修改成功");
+        }else{
+            resultJson.put("msg","修改失败");
+        }
+        return resultJson;
     }
 
     @Override

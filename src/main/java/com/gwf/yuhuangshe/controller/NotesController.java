@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface NotesController {
     public JSONObject selNotes(HttpServletRequest request, Integer page, Integer pageSize);
-    public JSONObject insertNote(Notes notes);
+    public JSONObject insertNote(HttpServletRequest request,Notes notes);
     public JSONObject updateNoteById(Notes notes);
     public JSONObject delNoteById(Notes notes);
 }

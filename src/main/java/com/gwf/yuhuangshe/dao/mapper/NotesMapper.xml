@@ -19,10 +19,10 @@
 
     </select>
     <delete id="delNoteTypeById">
-        delete from note_type where id=#{id}
+        delete from notes where id=#{id}
     </delete>
     <update id="updateNoteTypeById">
-        UPDATE note_type
+        UPDATE notes
         <trim prefix="set" suffixOverrides=",">
             <if test="text != null"> text = #{text},</if>
             <if test="state != null"> state = #{state },</if>
@@ -30,9 +30,9 @@
         </trim>
         WHERE id = #{id}
     </update>
-    <insert id="insertNoteType">
+    <insert id="insertNote">
         insert into
-        note_type(text,state,value)
-        values(#{text},#{state},#{value})
+        notes(u_id,note_Type,notes,createTime,state,test)
+        values(#{uId},#{noteTypeId},#{notes},#{createTime},#{state},#{test})
     </insert>
 </mapper>

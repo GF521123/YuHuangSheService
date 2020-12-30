@@ -25,8 +25,8 @@ public class NotesControllerImpl implements NotesController {
     @RequestMapping("/insertNote")
     @ResponseBody
     @Override
-    public JSONObject insertNote(Notes notes) {
-        return notesService.insertNote(notes);
+    public JSONObject insertNote(HttpServletRequest request,Notes notes) {
+        return notesService.insertNote(request,notes);
     }
 
     @RequestMapping("/updateNoteById")
