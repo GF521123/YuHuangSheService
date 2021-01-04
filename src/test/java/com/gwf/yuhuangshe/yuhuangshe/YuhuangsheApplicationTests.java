@@ -7,12 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class YuhuangsheApplicationTests {
-//    @Autowired
+    //    @Autowired
 //    private
     @Test
     void contextLoads() {
-//        System.out.println(CryptoUtil.encode("123"));
+        System.out.println(CryptoUtil.encode("123"));
 //        System.out.println(CryptoUtil.decode("Rs06rm4NiNE"));
     }
-
 }

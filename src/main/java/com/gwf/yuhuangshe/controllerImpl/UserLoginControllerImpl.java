@@ -25,5 +25,8 @@ public class UserLoginControllerImpl implements UserLoginController {
     public JSONObject logout(HttpServletRequest request){
         return loginService.logout(request);
     }
-
+    @RequestMapping("/getLoginUser")
+    public JSONObject getLoginUser(HttpServletRequest request){
+        return loginService.getLoginUser( request);
+    }
 }

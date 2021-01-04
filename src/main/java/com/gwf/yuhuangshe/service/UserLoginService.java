@@ -9,4 +9,6 @@ public interface UserLoginService {
     public JSONObject login(HttpServletRequest request, User user);
 
     JSONObject logout(HttpServletRequest request);
+
+    JSONObject getLoginUser(HttpServletRequest request);
 }

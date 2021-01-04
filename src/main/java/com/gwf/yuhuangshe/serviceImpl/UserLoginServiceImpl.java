@@ -26,7 +26,7 @@ public class UserLoginServiceImpl implements UserLoginService {
             resultJson.put("code", 0 );
             resultJson.put("userid", result.get(0).getUId() );
             HttpSession session = request.getSession();
-            session.setAttribute("userlogin", result.get(0));
+            session.setAttribute("loginUser",result.get(0));
         }else{
             resultJson.put( "code",200 );
         }
@@ -38,5 +38,14 @@ public class UserLoginServiceImpl implements UserLoginService {
         HttpSession session = request.getSession();
 //        session.setAttribute("userlogin", result.get(0));
         return null;
+    }
+
+    @Override
+    public JSONObject getLoginUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User userlogin = (User) session.getAttribute("loginUser");
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("loginUser",userlogin);
+        return resultJson;
     }
 }

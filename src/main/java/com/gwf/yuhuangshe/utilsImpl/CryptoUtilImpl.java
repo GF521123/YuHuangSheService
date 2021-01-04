@@ -41,7 +41,7 @@ public class CryptoUtilImpl implements CryptoUtil {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        generator.init(new SecureRandom(key.getBytes("utf-8")));
+        generator.init(new SecureRandom(key.getBytes()));
         Key key1 = generator.generateKey();
         generator = null;
         return key1;
@@ -61,7 +61,7 @@ public class CryptoUtilImpl implements CryptoUtil {
      */
     public static String encode(String key, String str) {
         try {
-            return Base64.encodeBase64URLSafeString(obtainEncode(key, str.getBytes("utf-8")));
+            return Base64.encodeBase64URLSafeString(obtainEncode(key, str.getBytes("GBK")));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "";

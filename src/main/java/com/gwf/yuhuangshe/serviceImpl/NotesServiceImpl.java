@@ -26,7 +26,7 @@ public class NotesServiceImpl implements NotesService {
 
 //        Integer request.getSession()
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("userlogin");
+        User user = (User) session.getAttribute("loginUser");
         List<Notes> roleList = notesMapper.selNotes(user.getUId());
         PageInfo<Notes> pageInfo = new PageInfo<>(roleList);
 
