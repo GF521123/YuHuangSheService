@@ -67,6 +67,14 @@ public class NotesServiceImpl implements NotesService {
 
     @Override
     public JSONObject delNoteById(Notes notes) {
-        return null;
+        JSONObject resultJson = new JSONObject();
+        int resultUpdate = notesMapper.delNoteById( notes);
+        resultJson.put("code",0);
+        if(resultUpdate == 1){
+            resultJson.put("msg","删除成功");
+        }else{
+            resultJson.put("msg","删除失败");
+        }
+        return resultJson;
     }
 }

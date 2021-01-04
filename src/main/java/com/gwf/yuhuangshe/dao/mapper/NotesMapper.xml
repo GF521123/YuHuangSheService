@@ -5,9 +5,9 @@
         <id column="id" property="id"></id>
         <result column="UName" property="Uname"></result>
         <result column="Uid" property="u_id"></result>
-        <result column="notes" property="noteType"></result>
+        <result column="value" property="noteType"></result>
         <result column="note_Type" property="noteTypeId"></result>
-        <result column="value" property="notes"></result>
+        <result column="notes" property="notes"></result>
         <result column="test" property="test"></result>
         <result column="createTime" property="createTime"></result>
         <result column="state" property="state"></result>
@@ -18,7 +18,7 @@
                 n.u_id = #{uId} and n.note_Type = nt.id and  u.id=n.u_id
 
     </select>
-    <delete id="delNoteTypeById">
+    <delete id="delNoteById">
         delete from notes where id=#{id}
     </delete>
     <update id="updateNoteById">
