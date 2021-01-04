@@ -32,4 +32,11 @@ public class UserLoginServiceImpl implements UserLoginService {
         }
         return resultJson;
     }
+
+    @Override
+    public JSONObject logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+//        session.setAttribute("userlogin", result.get(0));
+        return null;
+    }
 }

@@ -7,4 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface UserLoginService {
     public JSONObject login(HttpServletRequest request, User user);
+
+    JSONObject logout(HttpServletRequest request);
 }

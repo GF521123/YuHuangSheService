@@ -16,8 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 public class UserLoginControllerImpl implements UserLoginController {
     @Autowired
     private UserLoginService loginService;
+
     @RequestMapping("/login")
     public JSONObject login(HttpServletRequest request, User user){
         return loginService.login(request,user);
     }
+    @RequestMapping("/logout")
+    public JSONObject logout(HttpServletRequest request){
+        return loginService.logout(request);
+    }
+
 }

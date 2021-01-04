@@ -15,21 +15,23 @@
     <select id="selNotes" resultMap="notesMap">
            SELECT n.id,n.test, u.UName,n.u_id, n.note_Type , n.notes,n.createTime ,nt.value,n.state
             FROM notes n ,users u,note_type nt WHERE
-                n.u_id = #{uId} and n.note_Type = nt.id
+                n.u_id = #{uId} and n.note_Type = nt.id and  u.id=n.u_id
 
     </select>
     <delete id="delNoteTypeById">
         delete from notes where id=#{id}
     </delete>
-    <update id="updateNoteTypeById">
+    <update id="updateNoteById">
         UPDATE notes
         <trim prefix="set" suffixOverrides=",">
-            <if test="text != null"> text = #{text},</if>
-            <if test="state != null"> state = #{state },</if>
-            <if test="value != null"> value = #{value},</if>
+            <if test="noteTypeId != null"> note_Type = #{noteTypeId},</if>
+            <if test="notes != null"> notes = #{notes },</if>
+            <if test="test != null"> test = #{test},</if>
+            <if test="state != null"> state = #{state},</if>
         </trim>
         WHERE id = #{id}
     </update>
+<!--    <if test="createTime != null"> createTime = #{createTime},</if>-->
     <insert id="insertNote">
         insert into
         notes(u_id,note_Type,notes,createTime,state,test)

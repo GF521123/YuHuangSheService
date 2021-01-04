@@ -11,8 +11,8 @@ class YuhuangsheApplicationTests {
 //    private
     @Test
     void contextLoads() {
-        System.out.println(CryptoUtil.encode("123"));
-//        System.out.println(CryptoUtil.decode("wouWVIuxfZdbiO10hazicA"));
+//        System.out.println(CryptoUtil.encode("123"));
+//        System.out.println(CryptoUtil.decode("Rs06rm4NiNE"));
     }
 
 }

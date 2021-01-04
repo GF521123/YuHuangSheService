@@ -1,6 +1,8 @@
 package com.gwf.yuhuangshe.utilsImpl;
 
 import com.gwf.yuhuangshe.utils.CryptoUtil;
+
+import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -19,13 +21,17 @@ public class CryptoUtilImpl implements CryptoUtil {
     public static final String DES = "DES";
 
     static {
-        DEFAULT_KEY = obtainKey(DEFAULT_SECRET_KEY);
+        try {
+            DEFAULT_KEY = obtainKey(DEFAULT_SECRET_KEY);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 获得key
      **/
-    public static Key obtainKey(String key) {
+    public static Key obtainKey(String key) throws UnsupportedEncodingException {
         if (key == null) {
             return DEFAULT_KEY;
         }
@@ -35,7 +41,7 @@ public class CryptoUtilImpl implements CryptoUtil {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        generator.init(new SecureRandom(key.getBytes()));
+        generator.init(new SecureRandom(key.getBytes("utf-8")));
         Key key1 = generator.generateKey();
         generator = null;
         return key1;
@@ -54,7 +60,12 @@ public class CryptoUtilImpl implements CryptoUtil {
      * String明文输入,String密文输出
      */
     public static String encode(String key, String str) {
-        return Base64.encodeBase64URLSafeString(obtainEncode(key, str.getBytes()));
+        try {
+            return Base64.encodeBase64URLSafeString(obtainEncode(key, str.getBytes("utf-8")));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
         // return Hex.encodeHexString(obtainEncode(key, str.getBytes()));
         // 可以转化为16进制数据
     }
