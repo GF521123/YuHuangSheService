@@ -23,8 +23,6 @@ public class NotesServiceImpl implements NotesService {
     public JSONObject selNotes(HttpServletRequest request, Integer page, Integer pageSize) {
         JSONObject resultJson = new JSONObject();
         PageHelper.startPage(page, pageSize);
-
-//        Integer request.getSession()
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("loginUser");
         List<Notes> roleList = notesMapper.selNotes(user.getUId());
@@ -40,7 +38,7 @@ public class NotesServiceImpl implements NotesService {
         JSONObject resultJson = new JSONObject();
         HttpSession session = request.getSession();
         notes.setCreateTime(new Date());
-        User user = (User) session.getAttribute("userlogin");
+        User user = (User) session.getAttribute("loginUser");
         notes.setUid(user.getUId());
         int restInsert =  notesMapper.insertNote(notes);
         resultJson.put("code",0);
