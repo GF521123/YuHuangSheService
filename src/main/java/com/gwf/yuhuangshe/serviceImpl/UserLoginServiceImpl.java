@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gwf.yuhuangshe.dao.UserMapper;
 import com.gwf.yuhuangshe.entity.User;
 import com.gwf.yuhuangshe.service.UserLoginService;
-import com.gwf.yuhuangshe.utils.CryptoUtil;
+import com.gwf.yuhuangshe.utils.HashUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +16,12 @@ import java.util.List;
 public class UserLoginServiceImpl implements UserLoginService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private HashUtil hashUtil;
 
     @Override
     public JSONObject login(HttpServletRequest request, User user){
-        user.setUPassword(CryptoUtil.encode(user.getUPassword()));
+        user.setUPassword(hashUtil.eccrypt(user.getUPassword()));
         List<User> result  =  userMapper.login(user);
         JSONObject resultJson = new JSONObject();
         if(result.size() == 1){
