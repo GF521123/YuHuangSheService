@@ -43,7 +43,20 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     useGlobalDataSourceStat: true
+  servlet:
+    multipart:
+      max-request-size: 1000MB
+      max-file-size: 1000MB
 
+
+#  # 上传文件总的最大值
+#  spring.servlet.multipart.max-request-size=10MB
+#  # 单个文件的最大值
+#  spring.servlet.multipart.max-file-size=10MB
+#
+#  ## jsp
+#  spring.mvc.view.prefix=/WEB-INF/jsp/
+#  spring.mvc.view.suffix=.jsp
 
 # mybatis  映射配置
 mybatis:
@@ -95,3 +108,4 @@ pagehelper:
 #  其中count列可以自己配置。
 #  重要提示：
 #  当 offsetAsPageNum=false 的时候，由于 PageNum 问题，RowBounds查询的时候 reasonable 会强制为 false。使用 PageHelper.startPage 方法不受影响。
+

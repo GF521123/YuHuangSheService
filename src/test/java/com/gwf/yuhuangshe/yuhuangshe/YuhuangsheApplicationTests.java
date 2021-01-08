@@ -1,12 +1,13 @@
 package com.gwf.yuhuangshe.yuhuangshe;
 
-import com.gwf.yuhuangshe.service.PDF2OtherService;
-import com.gwf.yuhuangshe.serviceImpl.PDF2OtherServiceImpl;
-import com.gwf.yuhuangshe.utils.CryptoUtil;
-import com.gwf.yuhuangshe.utils.HashUtil;
+import com.gwf.yuhuangshe.serviceImpl.FileServiceImpl;
+import com.spire.pdf.FileFormat;
+import com.spire.pdf.PdfDocument;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+
 
 @SpringBootTest
 class YuhuangsheApplicationTests {
@@ -14,14 +15,16 @@ class YuhuangsheApplicationTests {
 //    private
 
     @Autowired
-    private PDF2OtherServiceImpl pDF2OtherService;
+    private FileServiceImpl fileService;
     @Test
     void contextLoads() {
-        pDF2OtherService.PDF2Word();
-//        System.out.println(hashUtil.eccrypt("admin"));
-//        System.out.println(hashUtil.eccrypt("123"));
-//        System.out.println(hashUtil.eccrypt("123"));
-//        System.out.println(CryptoUtil.decode("Rs06rm4NiNE"));
+        System.out.println("得到的是当前的classpath的绝对URI路径:"+ System.getProperty("user.dir"));
+
+        PdfDocument pdf = new PdfDocument();
+
+        pdf.loadFromFile("F:\\3.pdf");
+        pdf.saveToFile("F:\\3.docx", FileFormat.DOCX);
+        System.out.println("转换over");
 
 
     }

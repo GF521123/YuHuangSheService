@@ -16,7 +16,7 @@
     <repositories>
         <repository>
             <id>com.e-iceblue</id>
-            <url>http://repo.e-iceblue.cn/repository/maven-public/</url>
+            <url>http://repo.e-iceblue.cn/repository/maven/</url>
         </repository>
     </repositories>
     <properties>
@@ -105,9 +105,9 @@
         </dependency>
 <!--        pdf 转换文件插件-->
         <dependency>
-            <groupId>e-iceblue</groupId>
-            <artifactId>spire.pdf.free</artifactId>
-            <version>3.9.0</version>
+            <groupId> e-iceblue </groupId>
+            <artifactId>spire.pdf</artifactId>
+            <version>3.11.6</version>
         </dependency>
     </dependencies>
 
